@@ -1,0 +1,218 @@
+.body {
+    /* font-size: 36px; */
+    margin:0;
+}
+
+
+.newGame {
+	background-color:#92e2a7;
+	border-radius:25px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 37px;
+	text-decoration:none;
+    text-shadow:0px 1px 4px #2f6627;
+    margin: 2px;
+}
+.newGame:hover {
+	background-color:#5cbf2a;
+}
+.newGame:active {
+	position:relative;
+	top:1px;
+}
+.level {
+	background-color:#92e2a7;
+	border-radius:25px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 37px;
+	text-decoration:none;
+    text-shadow:0px 1px 4px #2f6627;
+    margin: 2px;
+}
+.level:hover {
+	background-color:#5cbf2a;
+}
+.level:active {
+	position:relative;
+	top:1px;
+}
+
+        
+h1 {
+ font-family: 'Dancing Script', Georgia, Times, serif;
+ font-size: 3em;
+ text-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+ 0px 10px 20px rgba(0,0,0,0.05),
+ 0px 20px 20px rgba(0,0,0,0.05),
+ 0px 30px 20px rgba(0,0,0,0.05);
+ /* line-height: 60px; */
+}
+h3 {
+ font-family: 'Dancing Script', Georgia, Times, serif;
+ font-size: 1.4em;
+ line-height: 33px;
+ margin-left: 8px;
+}
+ 
+p {
+ font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+ font-size: 18px;
+ line-height: 25px;
+ margin-top: 15px;
+}
+.board-container {
+    position:fixed;
+    top: 21%;
+    /* display: inline; */
+    font-size: 1.5em;
+   
+}
+.game {
+    position: fixed;
+    left: 25%;
+    /* top: 10%; */
+ 
+}
+
+.leftMenu {
+    position: fixed;
+    left: 5%;
+    top: 24.5%;
+    width: 200px;
+    background-color: rgb(241, 186, 232);
+    cursor: pointer;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+       0px 10px 20px rgba(0,0,0,0.05),
+       0px 20px 20px rgba(0,0,0,0.05),
+       0px 30px 20px rgba(0,0,0,0.05);
+}
+.headLine {
+    position: fixed;
+    /* display: inline-block; */
+    margin-left: 20%;
+    
+}
+
+.stopWatch {
+    display: inline-block;
+    margin-left: 0.3em;
+    margin-right: 0.1em;
+}
+.bestTime {
+    display: inline-block;
+    margin-left: 0.3em;
+    margin-right: 0.1em;
+}
+
+.cellBox { 
+    background-color: lightyellow;
+    cursor: pointer;
+ position: inline-block;
+
+}
+
+.cellBox a:hover { 
+    background-color: rgb(230, 173, 187);
+    cursor: pointer;
+ position: inline-block;
+
+}
+.hidden {
+    display: none;
+}
+.gameWon {
+    /* opacity: 1; */
+    z-index: 1;
+    opacity: 0.5;
+    width: 400px;
+    height: 350px;
+    position: fixed;
+    top: 25%;
+    left: 35%;
+}
+.gameOver {
+    z-index: 2;
+    opacity: 0.2;
+    background-color: darksalmon;
+    width: 400px;
+    height: 350px;
+    position: fixed;
+    top: 25%;
+    left: 35%;
+    /* width: 200px; */
+    /* height: 200px; */
+}
+
+.disableMouse {
+    pointer-events: none;
+}
+table {
+    font-family: 'Arial';
+    margin: 25px auto;
+    border-collapse: collapse;
+    border: 1px solid #eee;
+    border-bottom: 2px solid #00cccc;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+       0px 10px 20px rgba(0,0,0,0.05),
+       0px 20px 20px rgba(0,0,0,0.05),
+       0px 30px 20px rgba(0,0,0,0.05);
+}
+th, td {
+      color: #999;
+      border: 1px solid #eee;
+      padding: 12px 35px;
+      /* border-collapse: collapse; */
+    }
+    td:hover {
+        background-color: rgb(250, 154, 218);
+      }
+    th {
+      background: #00cccc;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 12px;
+        .last {
+        border-right: none;
+      }
+    }
+  }
+
+.hint {
+	background:-webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
+	background-color:#f9f9f9;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	padding:12px 7px;
+	text-decoration:none;
+}
+.hint:hover {
+	background:-o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
+	background-color:#e9e9e9;
+}
+.hint:active {
+	position:relative;
+	top:1px;
+}
