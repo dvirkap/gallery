@@ -22,7 +22,6 @@ function onStartGuessing() {
 }
 
 function renderQuest() {
-    debugger;
     // TODO: select the <h2> inside quest and update its text by the currQuest text//
     $('.question-txt').html(`${gCurrQuest.txt}`)
 
@@ -74,7 +73,6 @@ function onUserResponse(res) {
 }
 
 function onAddGuess() {
-    // debugger;
     // TODO: Get the inputs' values
     // TODO: Call the service addGuess
     var newGuessTxt = $('#newGuess').val();    

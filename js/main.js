@@ -36,7 +36,7 @@ function renderProj(clickedProj) {
     $('.modal-item-intro').html(currProject.intro);
     $('.modal-img').attr("src", `img/portfolio/${currProject.id}.jpg`);
     $('.modal-project-desc').html(currProject.desc);
-    $('.modal-proj-link').attr("src", `proj/${currProject.id}/index.html`);
+    $('.modal-proj-link').attr("href", `projs/${currProject.id}/index.html`);
     $('.modal-proj-date').html(currProject.date);
     $('.modal-proj-client').html(currProject.client);
     $('.modal-proj-cat').html(currProject.category);
