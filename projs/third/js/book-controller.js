@@ -8,10 +8,10 @@ function renderBooks() {
         <th scope="row" class ="book-row-id">${book.id}</th>
         <td class ="book-name">${book.name}</td>
         <td class ="book-author">${book.author}</td>
-        <td class ="book-price">${book.price}$</td>
+        <td class ="book-price">${formatNum(book.price)}</td>
         <td class ="book-actions"><div class="action-buttons">
-        <button type="button" onclick="onButtonInfo(this); updateModal(this)" data-name="${book.name}" class="book-btn btn btn-success btn-info"  data-toggle="modal" data-target="#infoModal">info / Update</button>
-        <button type="button" onclick="onButtonDelete(this)" data-name="${book.name}" class="book-btn btn btn-danger btn-delete">Delete</button>
+        <button type="button" onclick="onButtonInfo(this); updateModal(this)" data-name="${book.name}" class="book-btn btn btn-success btn-info"  data-toggle="modal" data-target="#infoModal" data-trans="buttons-info">info / Update</button>
+        <button type="button" onclick="onButtonDelete(this)" data-name="${book.name}" class="book-btn btn btn-danger btn-delete" data-trans="buttons-delete">Delete</button>
       </div></td>
       </tr>`
     })
@@ -20,75 +20,64 @@ function renderBooks() {
 
 function updateModal(item) {
     var book = getBook(item);
+    var num = book.price
     bookObj = book[0];
     $('.modal-title').html(`
     <button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editTitle()">&#128393</button>
     <span class="remove-title">${bookObj.name}</span>
     <input type="text" id="book-title" class="title hidden" placeholder="${bookObj.name}">
     </input>`)
-    $('.author').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editAuthor()">&#128393</button><span class="font-weight-bold"> Author:</span><span class="remove-author"> ${bookObj.author}</span><input type="text" id="book-author" class="author-input hidden" placeholder="${bookObj.author}"></input>`)
-    $('.price').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editPrice()">&#128393</button><span class="font-weight-bold">price:</span><span class="remove-price">${bookObj.price}$</span><input type="text" id="book-price" class="price-input hidden " placeholder="${bookObj.price}"></input>`)
+    $('.author').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editAuthor()">&#128393</button><span class="font-weight-bold" data-trans="update-author"> Author:</span><span class="remove-author"> ${bookObj.author}</span><input type="text" id="book-author" class="author-input hidden" placeholder="${bookObj.author}"></input>`)
+    $('.price').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editPrice()">&#128393</button><span class="font-weight-bold" data-trans="update-price">price:</span><span class="remove-price">${bookObj.price}$</span><input type="text" id="book-price" class="price-input hidden " placeholder="${bookObj.price}"></input>`)
     $('.photo').html(`<img src="img/${bookObj.photo()}">`)
-    $('.desc').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editDesc()">&#128393</button><span class="font-weight-bold">Short description:</span><span class="remove-desc"> ${bookObj.description}</span><input type="text" id="book-desc" class="desc-input hidden" placeholder="${bookObj.description}"></input>`)
+    $('.desc').html(`<button type="button" class="btn btn-outline-info btn-sm pencil-btn" onclick="editDesc()">&#128393</button><span class="font-weight-bold" data-trans="update-desc">Short description:</span><span class="remove-desc"> ${bookObj.description}</span><input type="text" id="book-desc" class="desc-input hidden" placeholder="${bookObj.description}"></input>`);
+    doTrans()
 }
 function editTitle() {
     var item = bookObj.name;
     var title = document.querySelector('.title');
     $('.remove-title').html('');
     title.classList.remove('hidden')
-    console.log(item);
 }
 function editAuthor() {
     var item = bookObj.name;
     var author = document.querySelector('.author-input');
-    console.log(author);
     $('.remove-author').html('');
     author.classList.remove('hidden')
-    console.log(item);
 }
 function editPrice() {
     var item = bookObj.price;
     var price = document.querySelector('.price-input');
-    console.log(price);
     $('.remove-price').html('');
     price.classList.remove('hidden')
-    console.log(item);
 }
 
 function editDesc() {
     var item = bookObj.description;
     var desc = document.querySelector('.desc-input');
-    console.log(desc);
     $('.remove-desc').html('');
     desc.classList.remove('hidden')
-    console.log(item);
 }
 function onSaveChanges() {
-    console.log(bookObj);
     if ($('#book-title').val()) {
         bookObj.name = $('#book-title').val();
-        console.log('changed name:', bookObj.name);
     }
     if ($('#book-author').val()) {
         bookObj.author = $('#book-author').val();
-        console.log('changed author:', bookObj.author);
     }
     if ($('#book-price').val()) {
         bookObj.price = $('#book-price').val();
-        console.log('changed price:', bookObj.price);
     }
     if ($('#book-desc').val()) {
         bookObj.description = $('#book-desc').val();
-        console.log('changed desc:', bookObj.description);
     }
     if (bookObj.photo) {
         bookObj.photo = bookObj.photo;
-        console.log('changed desc:', bookObj.photo);
     }
-    console.log('book obj:', bookObj);
     // debugger;
     gBooks.push(bookObj);
     renderBooks()
+    doTrans();
     $('#infoModal').hide();
     $('.modal-backdrop').hide();
 
@@ -105,12 +94,32 @@ function onAddBook() {
         author: 'Add book author',
         price: 'Add book price'
     };
-    // $('#newBookModal').show();
     $('.modal-title').html(`
-    <input type="text" id="book-title" class="title" placeholder="${bookObj.name}"></input>`)
-    $('.author').html(`<input type="text" id="book-author" class="author-input" placeholder="${bookObj.author}"></input>`)
-    $('.price').html(`<input type="number" id="book-price" class="price-input " placeholder="${bookObj.price}"></input>`)
-    // $('.photo').html(`<img src="img/${bookObj.photo()}">`)
-    $('.desc').html(`<input type="text" id="book-desc" class="desc-input" placeholder="${bookObj.description}"></input>`)
+    <input type="text" id="book-title" class="title" data-trans="add-book-modal-title" placeholder="${bookObj.name}"></input>`)
+    $('.author').html(`<input type="text" id="book-author" class="author-input"  data-trans="add-book-modal-author" placeholder="${bookObj.author}"></input>`)
+    $('.price').html(`<input type="number" id="book-price" class="price-input " data-trans="add-book-modal-price" placeholder="${bookObj.price}"></input>`)
+    $('.desc').html(`<input type="text" id="book-desc" class="desc-input" data-trans="add-book-modal-desc" placeholder="${bookObj.description}"></input>`)
+doTrans()
+
+}
+
+function onClickLang(getLang) {
+var lang = getLang.innerText.toLowerCase();
+console.log(lang);
+var getBodyEl = document.querySelector('body')
+var getModalEl = document.querySelector('.modal');
+if (lang === 'he')  {
+    getBodyEl.classList.add('trans-rtl');
+    getModalEl.classList.add('trans-rtl');
+     
+} else {
+    getBodyEl.classList.remove('trans-rtl');
+    getModalEl.classList.remove('trans-rtl');
+    
+}
+setLang(lang);
+renderBooks()
+doTrans();
+
 
 }

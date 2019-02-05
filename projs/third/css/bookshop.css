@@ -1,3 +1,7 @@
+.trans-rtl {
+    direction: rtl;
+}
+
 .book-btn {
     margin: 1px;
 }
@@ -11,6 +15,14 @@
 .modal-title .pencil-btn {
     padding: 4px;
     margin-right: 6px;
+}
+.upper-el {
+    display: flex;
+}
+.lang-btn {
+    order: -1;
+    margin: 2px;
+    border-radius: 4px;
 }
 
 .swing-out-top-bck {

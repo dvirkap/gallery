@@ -36,8 +36,8 @@ var books = [
 
 function init() {
     createBooks();
-    renderBooks()
-
+    renderBooks();
+    
 }
 function createBooks() {
     for (let i = 0; i < 4; i++) {
@@ -71,7 +71,7 @@ function getBook(item) {
 
 function onButtonInfo(item) {
     var book = getBook(item)
-    console.log('info', book);
+    doTrans();
 
 }
 
