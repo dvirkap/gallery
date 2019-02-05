@@ -1,7 +1,9 @@
 .trans-rtl {
     direction: rtl;
 }
-
+.table thead th {
+    border-bottom-width: 0px !important;
+}
 .book-btn {
     margin: 1px;
 }

@@ -2,6 +2,7 @@
 var gBooks = [];
 var BOOK_ID = 1;
 var bookObj;
+var isAscending = true;
 var books = [
     {
         name: 'The Aztec Carnival Out Of the Jailer',
@@ -13,7 +14,7 @@ var books = [
     {
         name: 'Devilless',
         author: 'Medusa Graciana',
-        price: 20,
+        price: 60,
         desc: `Aliquam tincidunt mauris eu risus. Donec odio. Quisque volutpat mattis eros.
      Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.`,
     },
@@ -37,7 +38,7 @@ var books = [
 function init() {
     createBooks();
     renderBooks();
-    
+
 }
 function createBooks() {
     for (let i = 0; i < 4; i++) {
@@ -92,3 +93,82 @@ function onButtonDelete(item) {
 
 }
 
+function sortBooks(sortType) {
+    console.log(gBooks);
+
+    console.log(sortType);
+    switch (sortType) {
+        case `price`:
+            gBooks.sort(function (a, b) {
+                if (isAscending === true) {
+                    return a.price - b.price;
+                }
+                else {
+                    gBooks.reverse();
+                }
+            })
+            break;
+        case `id`:
+            gBooks.sort(function (a, b) {
+                if (isAscending === true) {
+                    return a.id - b.id;
+                }
+                else {
+                    gBooks.reverse();
+                }
+            })
+            break;
+        case `title`:
+            gBooks.sort(function (a, b) {
+                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+                if (isAscending === true) {
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                
+                    // names must be equal
+                    return 0;
+
+                } else {
+                    gBooks.reverse();
+                }
+            })
+            break;
+            case `author`:
+            gBooks.sort(function (a, b) {
+                var nameA = a.author.toUpperCase(); // ignore upper and lowercase
+                var nameB = b.author.toUpperCase(); // ignore upper and lowercase
+                if (isAscending === true) {
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                
+                    // names must be equal
+                    return 0;
+
+                } else {
+                    gBooks.reverse();
+                }
+            })
+            break;
+
+    }
+    if (isAscending === true) isAscending = false;
+    else {
+        isAscending = true;
+    }
+    console.log(gBooks);
+
+}
+
+//Utils
+function compareNumbers(a, b) {
+    return a - b;
+}

@@ -98,6 +98,7 @@ function onAddBook() {
     <input type="text" id="book-title" class="title" data-trans="add-book-modal-title" placeholder="${bookObj.name}"></input>`)
     $('.author').html(`<input type="text" id="book-author" class="author-input"  data-trans="add-book-modal-author" placeholder="${bookObj.author}"></input>`)
     $('.price').html(`<input type="number" id="book-price" class="price-input " data-trans="add-book-modal-price" placeholder="${bookObj.price}"></input>`)
+    $('.photo').html(``);
     $('.desc').html(`<input type="text" id="book-desc" class="desc-input" data-trans="add-book-modal-desc" placeholder="${bookObj.description}"></input>`)
 doTrans()
 
@@ -121,5 +122,11 @@ setLang(lang);
 renderBooks()
 doTrans();
 
+}
 
+function onSortClick(theader) {
+    var sortType = theader.dataset.th;        
+    sortBooks(sortType)
+    renderBooks()
+    doTrans()
 }
