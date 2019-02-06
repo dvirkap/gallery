@@ -1,12 +1,12 @@
-# [Cosing Academy - Base Gallery]
-A responsive portfolio grid to be used by Coding Academy students
+# [DVir kaplan - Projects Gallery]
+showcase of past projects
 
 
-## Usage
+#Disclaimer
 
+To be used with caution!!!
 ### Basic Usage
-
-After downloading, simply edit the HTML, CSS and JS files included with the template to Make-it-Yours.
+Just open and enjoy ;-)
 
 
 ## Copyright and License
